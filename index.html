@@ -17,7 +17,7 @@
   <body>
   
      <div class="container">
-            <h2>Select a Menu</h2>
+            <h2>Select a Major</h2>
       
             <div style='padding: 5px;'>    
                <button type='button' class="btn btn-primary" onClick="getData('CIT')">CIT</button> 
@@ -26,7 +26,7 @@
       
   
            <h3>We filter our dataset by meal</h3>
-                <div id="menuTable"></div>
+                <div id="majorTable"></div>
                 
            
      
@@ -57,7 +57,7 @@
     	request.onload = function() {
 
         	var data = JSON.parse(request.responseText);
-			major_items = data.filter(getMajor)   // filter data for selected meal
+			major_items = data.filter(getMajor)   
 		
 			function getMajor(item) {
             	return item.major == selected_major;
@@ -68,10 +68,10 @@
              	var compiledTemplateText = Handlebars.compile(templateText);   // get and compile template code
               	
               	compiledHtml = compiledTemplateText({ rows: major_items })      // apply data to template
-              	document.getElementById('menuTable').innerHTML = compiledHtml; 	
+              	document.getElementById('majorTable').innerHTML = compiledHtml; 	
        	 	}
         	else {
-            	document.querySelector('#menuTable').innerHTML = "There was an error, or menu items not found";
+            	document.querySelector('#majorTable').innerHTML = "There was an error, or menu items not found";
         	}
 		}
 
