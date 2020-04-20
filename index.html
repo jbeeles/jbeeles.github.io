@@ -52,7 +52,7 @@
 
 	function getData(selected_major) {
 		var request = new XMLHttpRequest();
-    	request.open('GET', 'cit5students.json');     // open the request
+    	request.open('GET', 'cit5students.json');    
 
     	request.onload = function() {
 
@@ -65,13 +65,13 @@
 
         	if (request.status == 200) {
               	var templateText = document.getElementById('tableTemplate').innerHTML;
-             	var compiledTemplateText = Handlebars.compile(templateText);   // get and compile template code
+             	var compiledTemplateText = Handlebars.compile(templateText);  
               	
-              	compiledHtml = compiledTemplateText({ rows: major_items })      // apply data to template
+              	compiledHtml = compiledTemplateText({ rows: major_items })      
               	document.getElementById('majorTable').innerHTML = compiledHtml; 	
        	 	}
         	else {
-            	document.querySelector('#majorTable').innerHTML = "There was an error, or menu items not found";
+            	document.querySelector('#majorTable').innerHTML = "Danger Will Robinson, there was an error!";
         	}
 		}
 
