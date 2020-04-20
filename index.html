@@ -30,8 +30,7 @@
 
             	var data = JSON.parse(request.responseText);
 			 major_items = data.filter(getMajor)       
-         	function getMajor(item) {
-                         return item.major == selected_major;   
+         	
          }
 			
             	if (request.status == 200) {
