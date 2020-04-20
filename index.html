@@ -1,52 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <meta charset="UTF-8">
-      <title>Project 5</title>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
-  </head>
-<body>
-  
-<div class="container">
-<h1>Select a Major</h1>
-  
- 
+<head>  
+        <meta charset="UTF-8">
+    <title>Jessica Beeles Project 5</title>
+</head>
+<body style='margin-left: 30px;'>
+
+    <h1>Select A Major</h1>
+   
         
     <input type="button" id='btn' value="CIT Majors">
     <input type="button" id='btn' value="Business Majors">
              
  	<div id="result"></div>
-  
-  
-<h3>We filter our dataset by major</h3>
-<div id="majorTable"></div>
-  
-  
+    <h2>We filter our dataset by major</h2>
 
-
-</div> 
-</body>
-
-
-
-<script type="text/x-handlebars-template" id="tableTemplate">
-
-<table class="table table-striped">
-<tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
-{{#each rows}}
-<tr>
-<td>{{name}}</td><td>{{major}}</td><td>{{midterm}}</td><td>{{final}}</td>
-</tr>
-{{/each}}
-</table>
-</script>
-  
-
+ 
 <script>
-document.addEventListener('DOMContentLoaded', function() {      // when page has loaded, more or less
+   
+    document.addEventListener('DOMContentLoaded', function() {     
 													  
-    	document.querySelector('#btn').onclick = function(){   // attach to button
-
+    	document.querySelector('#btn').onclick = function(){  
         	var request = new XMLHttpRequest();
         	request.open('GET', 'cit5students.json');
 
@@ -55,17 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {      // when page has
             	var data = JSON.parse(request.responseText);
 			
             	if (request.status == 200) {
-            		var contents = "<table cellspacing='5'><tr><td>Name</td><td>Midterm</td><td>Final</td></tr>"
+            		var contents = "<table cellspacing='5'><tr><td>Name</td><td></td>Major<td>Midterm</td><td>Final</td></tr>"
 					
             		for(i = 0; i < data.length; i++) {
-                     	contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
+                     	contents += "<tr><td>" + data[i].name +"<tr><td>" + data[i].major + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
                 	}
 					
                 	contents += "</table>";
                 	document.querySelector('#result').innerHTML = contents;
             	}
             	else {
-                	document.querySelector('#result').innerHTML = "There was an error.";
+                	document.querySelector('#result').innerHTML = "Danger will Robinson, there was an error.";
             	}
         }
 
@@ -74,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {      // when page has
 	
   });
    
+</script>
    
-  
-   </script>
+   
+</body>
 </html>
